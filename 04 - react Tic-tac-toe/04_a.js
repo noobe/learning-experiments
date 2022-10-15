@@ -15,48 +15,48 @@ const Title = ({ gameState }) => {
 
 const checkBoardState = boardState => {
   // Check if any horizontal spaces are filled.
-  if (boardState[0][0] === boardState[0][1] && boardState[0][1] === boardState[0][2]) {
+  if (boardState[0][0] !== null && boardState[0][0] === boardState[0][1] && boardState[0][1] === boardState[0][2]) {
     return {
       winner: boardState[0][0],
       positions: [[0][0], [0][1], [0][2]]
     };
-  } else if (boardState[1][0] === boardState[1][1] && boardState[0][1] === boardState[1][2]) {
+  } else if (boardState[1][0] !== null && boardState[1][0] === boardState[1][1] && boardState[0][1] === boardState[1][2]) {
     return {
       winner: boardState[1][0],
       positions: [[1][0], [1][1], [1][2]]
     };
-  } else if (boardState[2][0] === boardState[2][1] && boardState[0][1] === boardState[2][2]) {
+  } else if (boardState[2][0] !== null && boardState[2][0] === boardState[2][1] && boardState[0][1] === boardState[2][2]) {
     return {
       winner: boardState[2][0],
       positions: [[2][0], [2][1], [2][2]]
     };
   }
   // Check vertical positions
-  else if (boardState[0][0] === boardState[1][0] && boardState[1][0] === boardState[2][0]) {
+  else if (boardState[0][0] !== null && boardState[0][0] === boardState[1][0] && boardState[1][0] === boardState[2][0]) {
     return {
       winner: boardState[0][0],
       positions: [[0][0], [1][0], [2][0]]
     };
   }
-  else if (boardState[0][0] === boardState[1][0] && boardState[1][0] === boardState[2][0]) {
+  else if (boardState[0][0] !== null && boardState[0][0] === boardState[1][0] && boardState[1][0] === boardState[2][0]) {
     return {
       winner: boardState[0][0],
       positions: [[1][1], [1][1], [2][1]]
     };
   }
-  else if (boardState[0][0] === boardState[1][0] && boardState[1][0] === boardState[2][0]) {
+  else if (boardState[0][0] !== null && boardState[0][0] === boardState[1][0] && boardState[1][0] === boardState[2][0]) {
     return {
       winner: boardState[0][0],
       positions: [[0][2], [1][2], [2][2]]
     };
   }
   // Check diogonal positions
-  else if (boardState[0][0] === boardState[1][1] && boardState[1][1] === boardState[2][2]) {
+  else if (boardState[0][0] !== null && boardState[0][0] === boardState[1][1] && boardState[1][1] === boardState[2][2]) {
     return {
       winner: boardState[0][0],
       positions: [[0][0], [1][1], [2][2]]
     };
-  } else if (boardState[0][2] === boardState[1][1] && boardState[1][1] === boardState[2][0]) {
+  } else if (boardState[0][2] !== null && boardState[0][2] === boardState[1][1] && boardState[1][1] === boardState[2][0]) {
     return {
       winner: boardState[0][0],
       positions: [[0][2], [1][1], [2][0]]
@@ -71,12 +71,16 @@ const App = () => {
   const [stepCount, setStepCount] = React.useState(0);
   // idle | ongoing | completed
   const [gameState, setGameState] = React.useState('idle');
+  const [winner, setWinner] = React.useState(null);
 
   const handleCellClick = (rowIndex, cellIndex) => {
     if (stepCount === 0){
       setGameState('ongoing');
     } else if (stepCount === 8) {
       setGameState('tie');
+    }
+    if (winner) {
+      return;
     }
     if (boardState[rowIndex][cellIndex]) {
       alert('Unselectable');
@@ -86,6 +90,7 @@ const App = () => {
       const res = checkBoardState(newBoardState);
       if (res) {
         setGameState('completed');
+        setWinner(res.winner);
       }
       setBoardState(newBoardState);
       setStepCount(stepCount+1);
@@ -107,6 +112,7 @@ const App = () => {
         ))}
       </div>)}
     </div>
+    {winner && <h3>The winner is {winner}</h3>}
   </>;
 };
 
