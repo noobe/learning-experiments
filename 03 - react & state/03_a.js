@@ -93,7 +93,26 @@ const CompWithStateUpdate = () => {
   </div>
  };
 
+ const CountUpdate = () => {
+  const [ count, setCount ] = React.useState(0);
 
+  const handleclick = () => {
+    setCount(count+1);
+    setCount(count+1);
+    setCount(count+1);
+    setCount(count => count+1);
+
+  }
+
+  // Placing a state update outside any callback functions would lead to an infinite loop.
+  // SetState triggers a re-render which triggers setState again
+  // setValue('Jack');
+
+  return <div>
+   <h1>Hi {count}</h1>
+   <button onClick={handleclick}>+</button>
+  </div>
+ };
 
 const App = () => <div>
   <BasicComp />
@@ -103,6 +122,7 @@ const App = () => <div>
   <CompWithStateUpdateFromUserInputAndDependentStates />
   <CompWithStateUpdateFromUserInputAndDependentStates2 />
   <CompWithStateUpdateWithAsync />
+  <CountUpdate />
 </div>
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
