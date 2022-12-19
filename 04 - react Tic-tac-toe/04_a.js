@@ -100,11 +100,11 @@ const App = () => {
   return <>
     <Title gameState={gameState}/>
     <div className="board">
-      {boardState.map((item, rowIndex) => <div key="rowIndex" className="row">
+      {boardState.map((item, rowIndex) => <div key={rowIndex} className="row">
         {item.map((cellItem, cellIndex) => (
           <div 
             className="cell"
-            key="cellIndex"
+            key={cellIndex}
             onClick={() => {handleCellClick(rowIndex, cellIndex)}}
           >
             {cellItem ? cellItem : ''}
