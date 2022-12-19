@@ -39,7 +39,7 @@ const root = ReactDOM.createRoot(document.getElementById('root2'));
 root.render(<X />);
 
 /*
-  Here, we class functional components A, B & C and call them in the heirarchy A -> B -> C
+  Here, we create class components A, B & C and call them in the heirarchy A -> B -> C
   By default React re-render a component when its props or state changes and 
   it also triggers the re-render for its child components.
 
