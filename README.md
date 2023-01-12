@@ -17,3 +17,5 @@ An app to create a monorepo and generate multiple apps from the same repo.
 An app to create a microfront end application.
 
 An app to tokenize user input and highlight them using a ui based text editor.
+
+A web assembly app.
