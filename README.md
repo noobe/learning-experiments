@@ -14,7 +14,7 @@ An app to study performance and measure improvements with standard performance i
 
 An app to create a monorepo and generate multiple apps from the same repo.
 
-An app to create a microfront end application.
+An app to create a microfront end application with various types of implementations.
 
 An app to tokenize user input and highlight them using a ui based text editor. Also add type ahead suggestions.
 
