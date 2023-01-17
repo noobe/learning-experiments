@@ -19,3 +19,5 @@ An app to create a microfront end application with various types of implementati
 An app to tokenize user input and highlight them using a ui based text editor. Also add type ahead suggestions.
 
 Write an application using web assembly app.
+
+Implement ui code editor from scratch.
