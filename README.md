@@ -21,3 +21,5 @@ An app to tokenize user input and highlight them using a ui based text editor. A
 Write an application using web assembly app.
 
 Implement ui code editor from scratch. Also manage intendation and cursor. Using hidden textarea and also contenEditable div approach.
+
+Try implement popular tokenizations and populate it into the editor above with syntax highlighting.
